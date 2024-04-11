@@ -34,10 +34,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Default config uses home row mods. So hold each of the keys on the home row to use ctrl, gui, alt, or shift
 [_COLEMAK] = LAYOUT_split_3x6_3(
-  KC_TAB,       KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,         KC_J,    KC_L,         KC_U,         KC_Y,         KC_SCLN,      KC_BSLS,
+  KC_TAB,       KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,         KC_J,    KC_L,         KC_U,         KC_Y,         KC_SCLN,      KC_BSPC,
   KC_LSFT,       LCTL_T(KC_A), LGUI_T(KC_R), LALT_T(KC_S), LSFT_T(KC_T), KC_G,         KC_M,    RSFT_T(KC_N), RALT_T(KC_E), RGUI_T(KC_I), RCTL_T(KC_O), KC_RSFT,
   KC_LCTL,      KC_Z,         KC_X,         KC_C,         KC_D,         KC_V,         KC_K,    KC_H,         KC_COMM,      KC_DOT,       KC_SLSH,      KC_RCTL,
-                                         LOWER,           KC_ENT,       KC_QUOT,      KC_BSPC, KC_SPC,       RAISE
+                                         KC_LGUI,           LOWER,       KC_SPC,      KC_ENT, RAISE,       KC_LALT
 ),
 
 /* Raise
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_split_3x6_3(
   KC_ESC,      KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
   _______,      KC_ESC,  _______, _______, _______, EE_CLR,       _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, _______,
-  _______,      KC_CAPS, KC_TILD, KC_MS_BTN1, KC_MS_BTN2,  KC_MS_BTN3,      QK_RBT, QK_BOOT, _______, KC_PIPE,  KC_DQT, _______,
+  _______,      FP_SNIPE_MOMENT, FP_SCROLL_MOMENT, KC_MS_BTN1, KC_MS_BTN2,  KC_MS_BTN3,      QK_RBT, QK_BOOT, _______, KC_PIPE,  KC_DQT, _______,
                                   _______, _______, _______,      KC_DEL,  _______, _______
 ),
 

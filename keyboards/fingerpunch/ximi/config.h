@@ -36,6 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define ROTATIONAL_TRANSFORM_ANGLE -25
 #define POINTING_DEVICE_INVERT_X
+#define PMW33XX_LIFTOFF_DISTANCE 0x02
 
 // wiring of each half
 #define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7 }

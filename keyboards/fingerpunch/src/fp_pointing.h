@@ -69,11 +69,11 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #    endif
 
 #    ifndef FP_POINTING_DEFAULT_DPI
-#        define FP_POINTING_DEFAULT_DPI 10
+#        define FP_POINTING_DEFAULT_DPI 12
 #    endif
 
 #    ifndef FP_POINTING_MIN_DPI
-#        define FP_POINTING_MIN_DPI 2
+#        define FP_POINTING_MIN_DPI 4
 #    endif
 
 #    ifndef FP_POINTING_MAX_DPI
