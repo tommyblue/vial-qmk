@@ -22,3 +22,6 @@
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
 #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #endif // POINTING_DEVICE_ENABLE
+
+// https://github.com/qmk/qmk_firmware/blob/master/docs/config_options.md#behaviors-that-can-be-configured
+#define TAPPING_TERM 200
