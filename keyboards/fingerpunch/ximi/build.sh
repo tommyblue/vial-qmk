@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+cd "$(dirname "${0}")/../../../"
+
+make fingerpunch/ximi:vial CIRQUE_ENABLE=no FP_TRACKBALL_ENABLE=yes RGB_MATRIX_ENABLE=no FP_POINTING_DEFAULT_DPI=20 FP_TRACKBALL_RIGHT_ONLY=yes RGBLIGHT_ENABLE=no ENCODER_ENABLE=no AUDIO_ENABLE=no HAPTIC_ENABLE=no
