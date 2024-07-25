@@ -189,7 +189,7 @@ void fp_apply_dpi_defaults(void) {
     if (FP_POINTING_COMBINED_SNIPING_RIGHT) {
         right_mode = FP_SNIPING_MODE;
     }
-    
+
     fp_set_cpi_combined_by_mode(left_mode, right_mode);
 #else
     fp_set_cpi_by_mode(FP_POINTING_MODE);
@@ -197,23 +197,24 @@ void fp_apply_dpi_defaults(void) {
 }
 
 void fp_apply_dpi(void) {
-    // sniping dpi always wins, since the intent of it is to be moving slowly in sniping mode
-    if(fp_snipe_layer_get() || fp_snipe_keycode_get()) {
-#ifdef POINTING_DEVICE_COMBINED
-        fp_set_cpi_combined_by_mode(FP_SNIPING_MODE, FP_SNIPING_MODE);
-#else
-        fp_set_cpi_by_mode(FP_SNIPING_MODE);
-#endif
-    } else if (fp_scroll_layer_get() || fp_scroll_keycode_get()) {
-#ifdef POINTING_DEVICE_COMBINED
-        fp_set_cpi_combined_by_mode(FP_SCROLLING_MODE, FP_SCROLLING_MODE);
-#else
-        fp_set_cpi_by_mode(FP_SCROLLING_MODE);
-#endif
-    } else {
-        // if not sniping or scrolling, set to default values
-        fp_apply_dpi_defaults();
-    }
+//     // sniping dpi always wins, since the intent of it is to be moving slowly in sniping mode
+//     if(fp_snipe_layer_get() || fp_snipe_keycode_get()) {
+// #ifdef POINTING_DEVICE_COMBINED
+//         fp_set_cpi_combined_by_mode(FP_SNIPING_MODE, FP_SNIPING_MODE);
+// #else
+//         fp_set_cpi_by_mode(FP_SNIPING_MODE);
+// #endif
+//     } else if (fp_scroll_layer_get() || fp_scroll_keycode_get()) {
+// #ifdef POINTING_DEVICE_COMBINED
+//         fp_set_cpi_combined_by_mode(FP_SCROLLING_MODE, FP_SCROLLING_MODE);
+// #else
+//         fp_set_cpi_by_mode(FP_SCROLLING_MODE);
+// #endif
+//     } else {
+//         // if not sniping or scrolling, set to default values
+//         fp_apply_dpi_defaults();
+//     }
+         fp_apply_dpi_defaults();
 }
 
 void fp_scroll_layer_set(bool scroll_value) {

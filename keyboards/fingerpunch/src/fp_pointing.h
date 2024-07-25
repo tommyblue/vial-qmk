@@ -81,7 +81,7 @@ bool fp_process_record_pointing(uint16_t keycode, keyrecord_t *record);
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_DPI
-#        define FP_POINTING_SNIPING_DPI 2
+#        define FP_POINTING_SNIPING_DPI 12
 #    endif
 
 #    ifndef FP_POINTING_SNIPING_LAYER
