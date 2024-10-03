@@ -80,43 +80,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 /*
 * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
-* │Esc│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ + │Del│
+* │Esc│ ` │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │Del│
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤
-* │Tab│ Q │ W │ F │ P │ G │ J │ L │ U │ Y │ ; │ [ │ ] │Bks│
+* │Tab│ + │ Q │ W │ F │ P │ G │ J │ L │ U │ Y │ ; │ ' │Bks│
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┴───┤
-* │Cap│ A │ R │ S │ T │ D │ H │ N │ E │ I │ O │ ' │ Enter │
+* │Cap│End│ A │ R │ S │ T │ D │ H │ N │ E │ I │ O │ Enter │
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┬───┤
-* │Sft│ Z │ X │ C │ V │ B │ K │ M │ , │ . │ / │ ` │Up │Sft│
+* │Sft│ \ │ Z │ X │ C │ V │ B │ K │ M │ , │ . │ / │Up │Sft│
 * ├───┼───┼───┼───┼───┴───┼───┴───┼───┴───┼───┼───┼───┼───┤
-* │Ctl│Gui│Alt│Fn1│ Space │ Enter │ Backs │Fn1│Lft│Dwn│Rht│
+* │Ctl│Gui│Alt│Fn1│ Space │ Backs │ Enter │Fn1│Lft│Dwn│Rht│
 * └───┴───┴───┴───┴───────┴───────┴───────┴───┴───┴───┴───┘
 */
-#define LAYOUT_LAYER_COLEMAK                                                                                                                          \
-      KC_ESC,  KC_1,    KC_2,     KC_3,         KC_4,    KC_5,      KC_6,    KC_7,  KC_8,     KC_9,          KC_0,     KC_MINUS, KC_EQL,   KC_DEL,    \
-      KC_TAB,  KC_Q,    KC_W,     KC_F,         KC_P,    KC_G,      KC_J,    KC_L,  KC_U,     KC_Y,          KC_SCLN,  KC_LBRC,  KC_RBRC,  KC_BSPC,   \
-      KC_CAPS, KC_A,    KC_R,     KC_S,         KC_T,    KC_D,      KC_H,    KC_N,  KC_E,     KC_I,          KC_O,     KC_QUOT,  KC_ENT,              \
-      KC_LSFT, KC_Z,    KC_X,     KC_C,         KC_V,    KC_B,      KC_K,    KC_M,  KC_COMM,  KC_DOT,        KC_SLSH,  KC_GRV,   KC_UP,    KC_RSFT,   \
-      KC_LCTL, KC_LGUI, KC_LALT,  MO(LAYER_FN), KC_SPC,             KC_ENT,         KC_BSPC,  MO(LAYER_FN),  KC_LEFT,  KC_DOWN,  KC_RIGHT
+#define LAYOUT_LAYER_COLEMAK                                                                                                                        \
+      KC_ESC,  KC_GRV,   KC_1,     KC_2,          KC_3,    KC_4,  KC_5,    KC_6,    KC_7,    KC_8,          KC_9,     KC_0,     KC_MINUS,  KC_DEL,    \
+      KC_TAB,  KC_EQL,   KC_Q,     KC_W,          KC_F,    KC_P,  KC_G,    KC_J,    KC_L,    KC_U,          KC_Y,     KC_SCLN,  KC_QUOT,   KC_BSPC,   \
+      KC_CAPS, KC_END,   KC_A,     KC_R,          KC_S,    KC_T,  KC_D,    KC_H,    KC_N,    KC_E,          KC_I,     KC_O,     KC_ENT,               \
+      KC_LSFT, KC_BSLS,  KC_Z,     KC_X,          KC_C,    KC_V,  KC_B,    KC_K,    KC_M,    KC_COMM,       KC_DOT,   KC_SLSH,  KC_UP,     KC_RSFT,   \
+      KC_LCTL, KC_LGUI,  KC_LALT,  MO(LAYER_FN),  KC_SPC,         KC_BSPC,          KC_ENT,  MO(LAYER_FN),  KC_LEFT,  KC_DOWN,  KC_RIGHT
 
 /*
 * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
-* │Esc│ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │ + │Del│
+* │Esc│ ` │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ - │Del│
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤
-* │Tab│ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ [ │ ] │Bks│
+* │Tab│ + │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ ' │Bks│
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┴───┤
-* │Cap│ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ ' │ Enter │
+* │Cap│End│ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │ Enter │
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┬───┤
-* │Sft│ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ ` │Up │Sft│
+* │Sft│ \ │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │Up │Sft│
 * ├───┼───┼───┼───┼───┴───┼───┴───┼───┴───┼───┼───┼───┼───┤
-* │Ctl│Gui│Alt│Fn1│ Space │ Enter │ Backs │Fn1│Lft│Dwn│Rht│
+* │Ctl│Gui│Alt│Fn1│ Space │ Backs │ Enter │Fn1│Lft│Dwn│Rht│
 * └───┴───┴───┴───┴───────┴───────┴───────┴───┴───┴───┴───┘
 */
-#define LAYOUT_LAYER_QWERTY                                                                                                                           \
-      KC_ESC,  KC_1,    KC_2,     KC_3,         KC_4,    KC_5,      KC_6,    KC_7,  KC_8,     KC_9,          KC_0,     KC_MINUS, KC_EQL,   KC_DEL,    \
-      KC_TAB,  KC_Q,    KC_W,     KC_E,         KC_R,    KC_T,      KC_Y,    KC_U,  KC_I,     KC_O,          KC_P,     KC_LBRC,  KC_RBRC,  KC_BSPC,   \
-      KC_CAPS, KC_A,    KC_S,     KC_D,         KC_F,    KC_G,      KC_H,    KC_J,  KC_K,     KC_L,          KC_SCLN,  KC_QUOT,  KC_ENT,              \
-      KC_LSFT, KC_Z,    KC_X,     KC_C,         KC_V,    KC_B,      KC_N,    KC_M,  KC_COMM,  KC_DOT,        KC_SLSH,  KC_GRV,   KC_UP,    KC_RSFT,   \
-      KC_LCTL, KC_LGUI, KC_LALT,  MO(LAYER_FN), KC_SPC,             KC_ENT,         KC_BSPC,  MO(LAYER_FN),  KC_LEFT,  KC_DOWN,  KC_RIGHT
+#define LAYOUT_LAYER_QWERTY                                                                                                                              \
+      KC_ESC,  KC_GRV,   KC_1,     KC_2,          KC_3,    KC_4,  KC_5,    KC_6,   KC_7,     KC_8,          KC_9,     KC_0,     KC_MINUS,  KC_DEL,   \
+      KC_TAB,  KC_EQL,   KC_Q,     KC_W,          KC_E,    KC_R,  KC_T,    KC_Y,   KC_U,     KC_I,          KC_O,     KC_P,     KC_QUOT,   KC_BSPC,  \
+      KC_CAPS, KC_END,   KC_A,     KC_S,          KC_D,    KC_F,  KC_G,    KC_H,   KC_J,     KC_K,          KC_L,     KC_SCLN,  KC_ENT,              \
+      KC_LSFT, KC_BSLS,  KC_Z,     KC_X,          KC_C,    KC_V,  KC_B,    KC_N,   KC_M,     KC_COMM,       KC_DOT,   KC_SLSH,  KC_UP,     KC_RSFT,  \
+      KC_LCTL, KC_LGUI,  KC_LALT,  MO(LAYER_FN),  KC_SPC,         KC_BSPC,         KC_ENT,   MO(LAYER_FN),  KC_LEFT,  KC_DOWN,  KC_RIGHT
 
 /*
 * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
@@ -128,7 +128,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┬───┤
 * │Sft│ á │ é │ í │ ó │ ú │   │ ) │ ] │ } │   │   │Up │Sft│
 * ├───┼───┼───┼───┼───┴───┼───┴───┼───┴───┼───┼───┼───┼───┤
-* │Ctl│Gui│Alt│Fn1│ Space │ Enter │ Backs │Fn1│Lft│Dwn│Rht│
+* │Ctl│Gui│Alt│Fn1│ Space │ Backs │ Enter │Fn1│Lft│Dwn│Rht│
 * └───┴───┴───┴───┴───────┴───────┴───────┴───┴───┴───┴───┘
 */
 #define LAYOUT_LAYER_FUNCTION                                                                                                                                          \
