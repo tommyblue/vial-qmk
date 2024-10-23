@@ -25,6 +25,8 @@
 
 // https://docs.qmk.fm/tap_hold
 #define TAPPING_TERM 250
+#define PERMISSIVE_HOLD
+
 /* RGB settings. */
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_LED_COUNT 42
