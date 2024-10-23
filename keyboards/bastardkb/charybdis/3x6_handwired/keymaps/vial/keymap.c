@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include "print.h"
+
 enum {
     _LAYER_BASE = 0,
     _LAYER_GAMING,
@@ -11,6 +11,10 @@ enum {
     _LAYER_LNX,
     _LAYER_POINTER
 };
+
+#undef CHARYBDIS_AUTO_SNIPING_ON_LAYER
+#define CHARYBDIS_AUTO_SNIPING_ON_LAYER _LAYER_POINTER
+#define CHARYBDIS_MINIMUM_DEFAULT_DPI 800
 
 enum custom_keycodes {
   A_GRAVE_MAC = SAFE_RANGE,
@@ -175,30 +179,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   return true;
 }
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//   switch (biton32(state)) {
-//   case _LAYER_BASE:
-//     uprintf("layer:colemak\n");
-//     break;
-//   case _LAYER_GAMING:
-//     uprintf("layer:qwerty\n");
-//     break;
-//   case _LAYER_FN:
-//     uprintf("layer:FN\n");
-//     break;
-//   case _LAYER_MAC:
-//     uprintf("layer:mac\n");
-//     break;
-//   case _LAYER_LNX:
-//     uprintf("layer:linux\n");
-//     break;
-//   case _LAYER_POINTER:
-//     uprintf("layer:pointer\n");
-//     break;
-//   }
-//   return state;
-// }
-
 #define LAYOUT_LAYER_COLEMAK                                                                                                                                                          \
       KC_TAB,  KC_Q,                    KC_W,    KC_F,    KC_P,                 KC_G,      KC_J,    KC_L,                      KC_U,    KC_Y,    KC_MINUS,                   KC_BSPC, \
       KC_LSFT, KC_A,                    KC_R,    KC_S,    KC_T,                 KC_D,      KC_H,    KC_N,                      KC_E,    KC_I,    KC_O,                       KC_RSFT, \
@@ -231,7 +211,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 #define LAYOUT_LAYER_POINTER                                                                                               \
       _______, QK_BOOTLOADER, XXXXXXX, XXXXXXX, TO(_LAYER_BASE), TO(_LAYER_GAMING),    KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, \
       _______, KC_LGUI,       KC_LALT, KC_LCTL, KC_LSFT,        XXXXXXX,             KC_WH_U, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, _______, \
-      _______, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,             KC_WH_D, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+      _______, XXXXXXX,       DRGSCRL, SNIPING, XXXXXXX,        XXXXXXX,             KC_WH_D, DPI_MOD, DPI_RMOD, S_D_MOD, S_D_RMOD, _______, \
                                        KC_BTN2, KC_BTN1,        KC_BTN3,             KC_BTN3, KC_BTN1                                                                                                                                                          \
 
 #define LAYOUT_wrapper(...) LAYOUT_split_3x6_3(__VA_ARGS__)
@@ -245,10 +225,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
 };
 
-// void keyboard_post_init_user(void) {
-//   // Customise these values to desired behaviour
-//   debug_enable=true;
-//   // debug_matrix=true;
-//   debug_keyboard=true;
-//   //debug_mouse=true;
-// }
+#    ifdef CHARYBDIS_AUTO_SNIPING_ON_LAYER
+layer_state_t layer_state_set_user(layer_state_t state) {
+    charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, CHARYBDIS_AUTO_SNIPING_ON_LAYER));
+    return state;
+}
+#    endif // CHARYBDIS_AUTO_SNIPING_ON_LAYER
