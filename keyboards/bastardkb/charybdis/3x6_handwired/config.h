@@ -21,6 +21,8 @@
 /* Trackball angle adjustment. */
 #define ROTATIONAL_TRANSFORM_ANGLE -25
 
+#define PMW33XX_LIFTOFF_DISTANCE 0x08
+
 /* RGB settings. */
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_LED_COUNT 42
