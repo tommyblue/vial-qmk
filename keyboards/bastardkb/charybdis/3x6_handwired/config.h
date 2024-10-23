@@ -23,6 +23,8 @@
 
 #define PMW33XX_LIFTOFF_DISTANCE 0x08
 
+// https://docs.qmk.fm/tap_hold
+#define TAPPING_TERM 250
 /* RGB settings. */
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_LED_COUNT 42
