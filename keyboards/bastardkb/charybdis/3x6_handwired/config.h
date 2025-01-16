@@ -21,8 +21,6 @@
 /* Trackball angle adjustment. */
 #define ROTATIONAL_TRANSFORM_ANGLE -25
 
-#define PMW33XX_LIFTOFF_DISTANCE 0x08
-
 // https://docs.qmk.fm/tap_hold
 #define TAPPING_TERM 250
 #define PERMISSIVE_HOLD
